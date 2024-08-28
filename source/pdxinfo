@@ -1,5 +1,6 @@
 name=Killer House Party
-author=Dandrew
-description=Killer House Party
-bundleID=com.Dandrew.killerhouseparty
+author=Andrew + Dan + Tyler
+description=A murder mystery game set at a house party in the 80s
+bundleID=com.tandrew.killerhouseparty
+version=1.0
 buildNumber=1
