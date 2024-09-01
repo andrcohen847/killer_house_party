@@ -8,11 +8,18 @@ local spFootstep = sound.sampleplayer.new("assets/sfx/footsteps")
 local playerImage = gfx.image.new("assets/images/player")
 
 
-function Player:init(x, y)
+function Player:init(x, y, gameManager)
+    self.gameManager = gameManager
+
     self:setImage(playerImage)
     self:moveTo(x, y)
+    self:setZIndex(Z_Indexes.Player)
+    self:setTag(TAGS.Player)
+    self:setCollideRect(3, 3, 10, 13)
     self:add()
 
+    self.xVelocity = 0
+    self.yVelocity = 0
     self.speed = 3
 end
 
@@ -44,4 +51,14 @@ function Player:update()
     else
         spFootstep:stop()
     end
+
+    if self.y < 60 then
+        self.gameManager:enterRoom("north")
+    elseif self.y > 210 then
+        self.gameManager:enterRoom("south")
+    end
+end
+
+function Player:collisionResponse()
+    return gfx.sprite.kCollisionTypeSlide()
 end

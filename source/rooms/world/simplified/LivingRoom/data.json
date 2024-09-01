@@ -1,0 +1,22 @@
+{
+	"identifier": "LivingRoom",
+	"uniqueIdentifer": "9c3431a0-4ce0-11ef-9333-b959950e7a54",
+	"x": 0,
+	"y": 0,
+	"width": 400,
+	"height": 240,
+	"bgColor": "#696A79",
+	"neighbourLevels": [
+		{
+			"levelIid": "21bbf8f0-4ce0-11ef-9333-2b573898cbae",
+			"dir": "n"
+		}
+	],
+	"customFields" : {},
+	"layers": [
+		"Floor.png",
+		"Walls.png",
+		"Furniture.png"
+	],
+	"entities" : {}
+}

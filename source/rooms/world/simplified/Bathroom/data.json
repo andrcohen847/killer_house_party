@@ -1,0 +1,26 @@
+{
+	"identifier": "Bathroom",
+	"uniqueIdentifer": "21bbf8f0-4ce0-11ef-9333-2b573898cbae",
+	"x": 0,
+	"y": -240,
+	"width": 400,
+	"height": 240,
+	"bgColor": "#696A79",
+	"neighbourLevels": [
+		{
+			"levelIid": "9c3431a0-4ce0-11ef-9333-b959950e7a54",
+			"dir": "s"
+		},
+		{
+			"levelIid": "09115100-4ce0-11ef-9333-79a88da34457",
+			"dir": "n"
+		}
+	],
+	"customFields" : {},
+	"layers": [
+		"Floor.png",
+		"Walls.png",
+		"Furniture.png"
+	],
+	"entities" : {}
+}

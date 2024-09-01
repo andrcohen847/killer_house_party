@@ -25,7 +25,6 @@ function playdate.update()
         HideMenu()
         GameStarted = true
         GameScene()
-        Player(200, 120)
     end
 
     pd.timer.updateTimers()
