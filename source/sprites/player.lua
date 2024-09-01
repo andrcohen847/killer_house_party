@@ -52,9 +52,9 @@ function Player:update()
         spFootstep:stop()
     end
 
-    if self.y < 60 then
+    if self.y < 60 and playdate.buttonJustPressed(playdate.kButtonA) then
         self.gameManager:enterRoom("north")
-    elseif self.y > 210 then
+    elseif self.y > 210 and playdate.buttonJustPressed(playdate.kButtonA) then
         self.gameManager:enterRoom("south")
     end
 end

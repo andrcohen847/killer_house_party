@@ -9,8 +9,6 @@ Z_Indexes = {
     Player = 100
 }
 
-roomArray = {"Kitchen", "LivingRoom", "Bathroom"}
-
 ldtk.load("rooms/world.ldtk", false)
 
 class('GameScene').extends()
@@ -24,8 +22,8 @@ function GameScene:init()
 end
 
 function GameScene:enterRoom(direction)
-    randomRoomNumber = math.random(0, 3)
-    self:goToRoom(roomArray[randomRoomNumber])
+    local room = ldtk.get_neighbours(self.roomName, direction)[1]
+    self:goToRoom(room)   
     self.player:add()
     local spawnX, spawnY
     if direction == "north" then
