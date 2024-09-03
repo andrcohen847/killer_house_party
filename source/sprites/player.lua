@@ -15,50 +15,42 @@ function Player:init(x, y, gameManager)
     self:moveTo(x, y)
     self:setZIndex(Z_Indexes.Player)
     self:setTag(TAGS.Player)
-    self:setCollideRect(3, 3, 10, 13)
     self:add()
+    self:setCollideRect(0, 0, self:getSize())
 
     self.xVelocity = 0
     self.yVelocity = 0
-    self.speed = 3
+    self.maxSpeed = 3
 end
 
 function Player:update()
+    self:moveWithCollisions(self.x + self.xVelocity, self.y + self.yVelocity)
+
     if pd.buttonIsPressed(pd.kButtonUp) then
-        if self.y > 15 then
-            spFootstep:play(0, 1.1)
-            self:moveBy(0, -self.speed)
-        end
+        self.yVelocity = -self.maxSpeed
     elseif pd.buttonIsPressed(pd.kButtonDown) then
-        if self.y < 225 then
-            spFootstep:play(0, 1.1)
-            self:moveBy(0, self.speed)
-        end
+        self.yVelocity = self.maxSpeed
     elseif pd.buttonIsPressed(pd.kButtonLeft) then
-        if self.x > 15 then
-            spFootstep:play(0, 1.1)
-            self:moveBy(-self.speed, 0)
-        end
+        self.xVelocity = -self.maxSpeed
     elseif pd.buttonIsPressed(pd.kButtonRight) then
-        if self.x < 385 then
-            spFootstep:play(0, 1.1)
-            self:moveBy(self.speed, 0)
-        end
+        self.xVelocity = self.maxSpeed
     elseif (playdate.buttonJustPressed(playdate.kButtonB)) and GameStarted == true then 
         self:remove()
         GameStarted = false
         ShowMenu()
     else
+        self.yVelocity = 0
+        self.xVelocity = 0
         spFootstep:stop()
     end
 
-    if self.y < 60 and playdate.buttonJustPressed(playdate.kButtonA) then
+    if (self.y == 96.0 or self.y == 80.0) and self.x < 194.0 and self.x >= 188.0 and playdate.buttonJustPressed(playdate.kButtonA) then
         self.gameManager:enterRoom("north")
-    elseif self.y > 210 and playdate.buttonJustPressed(playdate.kButtonA) then
+    elseif self.y > 180 and playdate.buttonJustPressed(playdate.kButtonA) then
         self.gameManager:enterRoom("south")
     end
 end
 
 function Player:collisionResponse()
-    return gfx.sprite.kCollisionTypeSlide()
+    return gfx.sprite.kCollisionTypeFreeze
 end
